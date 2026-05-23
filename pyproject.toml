@@ -1,0 +1,28 @@
+[project]
+name = "reflex"
+version = "0.1.0"
+description = "Gesture-controlled Fruit Ninja clone using MediaPipe hand tracking."
+readme = "README.md"
+authors = [
+    { name = "Sam Doane", email = "sjdoane@usc.edu" }
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "mediapipe>=0.10.35,<0.11.0",
+    "opencv-python>=4.10.0,<5.0",
+    "pygame-ce>=2.5.0",
+    "numpy>=1.26,<3.0",
+    "platformdirs>=4.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+]
+
+[project.scripts]
+reflex = "reflex.main:main"
+
+[build-system]
+requires = ["uv_build>=0.10.12,<0.11.0"]
+build-backend = "uv_build"
