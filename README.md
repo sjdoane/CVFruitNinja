@@ -3,13 +3,16 @@
 A webcam-controlled Fruit Ninja clone. Slice with your index finger.
 Python, MediaPipe, pygame.
 
-![demo](docs/demo.gif)
-
 ## Run
 
-You need [uv](https://docs.astral.sh/uv/) and a webcam.
+You need Python 3.12, [uv](https://docs.astral.sh/uv/), and a webcam.
+The current webcam backend uses Windows DirectShow.
+
+Clone the repository and run from its root:
 
 ```bash
+git clone https://github.com/sjdoane/CVFruitNinja.git
+cd CVFruitNinja
 uv run reflex
 ```
 
