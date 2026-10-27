@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import queue
 import sys
+import time
 from dataclasses import dataclass
 from enum import Enum
 
@@ -357,10 +358,11 @@ def run(
                             last_result.timestamp_ms,
                         )
 
-            # Prune on the wall clock so a fully lost hand actually times out
-            # even when no fresh tracker result is arriving.
+            # Tracker timestamps use monotonic system uptime, while pygame
+            # ticks start at init. Prune in the tracker clock even when no
+            # fresh result arrives; keep game timers on pygame ticks.
+            hands_state.prune(int(time.monotonic() * 1000))
             now_ms = pygame.time.get_ticks()
-            hands_state.prune(now_ms)
 
             # Cap dt so a window-hitch or tab-switch cannot teleport a fruit
             # through the trail. clock.get_time() returns the prior frame's ms.

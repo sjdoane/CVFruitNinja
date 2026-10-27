@@ -84,8 +84,8 @@ tests/            pytest suite
 uv run python -m pytest -q
 ```
 
-49 tests covering the one-euro filter, slash math, fruit physics, combo
-multipliers, bomb spawn ramps, and best-score persistence.
+54 tests covering the one-euro filter, slash math, fruit physics, combo
+multipliers, bomb spawn ramps, best-score persistence, and stale-hand expiry.
 
 ## License
 
