@@ -63,6 +63,9 @@ class HandState:
     filter_y: OneEuroFilter
     trail: deque[tuple[float, float, float]]
     last_seen_ms: int = 0
+    # Latest tracker sample already considered by the collision pass. Keep
+    # the trail itself intact for smoothing and fading visual feedback.
+    last_slash_t_sec: float | None = None
 
 
 _ACCEPTED_LABELS = ("Left", "Right")

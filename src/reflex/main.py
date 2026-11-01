@@ -62,6 +62,12 @@ def _try_slash(
             continue
         t_prev = state.trail[-2][2]
         t_curr = state.trail[-1][2]
+        if state.last_slash_t_sec == t_curr:
+            continue
+        # Consider each hand's sample once, even if it misses all fruit.
+        # Otherwise targets moving into an old swipe get sliced on later
+        # render frames without any new movement from that hand.
+        state.last_slash_t_sec = t_curr
         if t_curr - t_prev > config.MAX_SLASH_STEP_DT_S:
             continue
         p1 = (state.trail[-2][0], state.trail[-2][1])
