@@ -59,6 +59,9 @@ A few choices worth pointing at:
 - **Velocity + recency gates** reject swipes shorter than 25 px between
   tracker samples or older than 80 ms apart, so a tracking glitch cannot
   fake a giant swipe.
+- Each hand's latest swipe is tested once, even when it misses. The fading
+  trail stays visible, but fruit entering an old path cannot score or hit
+  a bomb without a new hand sample.
 
 ## Layout
 
@@ -84,8 +87,9 @@ tests/            pytest suite
 uv run python -m pytest -q
 ```
 
-54 tests covering the one-euro filter, slash math, fruit physics, combo
-multipliers, bomb spawn ramps, best-score persistence, and stale-hand expiry.
+66 tests covering the one-euro filter, slash math, fruit physics, combo
+multipliers, bomb spawn ramps, best-score persistence, stale-hand expiry,
+and one-pass swipe consumption.
 
 ## License
 
